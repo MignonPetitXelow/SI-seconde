@@ -4,7 +4,6 @@
  * @brief 
  * @version 0.1
  * @date 2022-10-17
- * 
  * @copyright Copyright (c) 2022
  */
 
@@ -13,18 +12,19 @@ int timestamp = 500;
 void loop(void)
 {
   if(isPressed(8)) { FlashOra(); return; }
-  
-  delay(timestamp);
-  StartGre();
-  delay(timestamp);
-  StartOra();
-  delay(timestamp);
-  StartRed();
-  delay(timestamp);
-  StartOra();
+  else {
+    delay(timestamp);
+    StartGre();
+    delay(timestamp);
+    StartOra();
+    delay(timestamp);
+    StartRed();
+    delay(timestamp);
+    StartOra();
+  }
 }
 
-void setup(void) { pinMode(8, INPUT); }
+void setup(void) { }
 
 int B_Color() { for(int i = 1; i < 12; ++i) ShutLight(i); } //Reset all lights 
 
@@ -58,4 +58,4 @@ void StartRed()
 }
 
 //Garbage 
-bool isPressed(int pin) { if(digitalRead(pin) == HIGH) return true; return false; }
+bool isPressed(int pin) { pinMode(pin, INPUT); if(digitalRead(pin) == HIGH) return true; return false; }
